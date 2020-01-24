@@ -67,6 +67,20 @@ file.onchange = function () {
     ctx.fillStyle = "#000";
     ctx.fillRect(0, 0, width, height);
     ctx.drawImage(img, 20, 20, 150, 150);
+    if (tags.title && tags.artist) {
+      ctx.fillStyle = "white";
+      ctx.fillText(tags.artist + " - " + tags.title, 200, 45);
+    }
+    else if (tags.title) {
+      ctx.fillStyle = "white";
+      ctx.fillText(tags.title, 200, 45);
+    }
+    if (tags.genre) {
+      ctx.fillText(tags.genre, 200, 100);
+    }
+    if (tags.year) {
+      ctx.fillText(tags.year, 200, 160);
+    }
 
     for (let i = 0; i < bufferLength; i++) { // Loop funkce pro vykreslení obdelníku
       barHeight = dataArray[i] * updateSliderH();
@@ -78,14 +92,7 @@ file.onchange = function () {
       ctx.fillRect(x, height - barHeight, barWidth, barHeight);
       x += barWidth + 1;
 
-      if (tags.title && tags.artist) {
-        ctx.fillStyle = "white";
-        ctx.fillText(tags.artist + " - " + tags.title, 200, 100);
-      }
-      else if (tags.title) {
-        ctx.fillStyle = "white";
-        ctx.fillText(tags.title, 200, 100);
-      }
+
 
     }
   }
